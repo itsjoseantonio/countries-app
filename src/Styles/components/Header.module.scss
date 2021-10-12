@@ -1,0 +1,17 @@
+@import '../abstracts/variables';
+
+.header {
+    background-color: $white;
+    box-shadow: -1px 3px 4px 0px rgba($dark-gray, 0.5);
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+
+        h1 {
+            font-size: 20px;
+        }
+    }
+}
