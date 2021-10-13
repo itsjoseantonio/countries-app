@@ -12,3 +12,10 @@ main {
     align-items: center;
     margin-bottom: 30px;
 }
+
+.flagsGrid {
+    display: grid;
+    grid-gap: 40px 50px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(auto, auto);
+}
