@@ -1,8 +1,11 @@
+// Styles //
+import styles from '../Styles/components/FlagItem.module.scss';
+
 const FlagItem = () => {
     return (
         <div>
             <div>
-                <img src="" alt="" />
+                <img src="https://flagcdn.com/w320/pe.png" alt="pe" />
             </div>
             <div>
                 <h2>Hermany</h2>
