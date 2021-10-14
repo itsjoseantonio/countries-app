@@ -11,19 +11,30 @@ import FlagItem from '../components/FlagItem';
 import styles from '../Styles/views/Home.module.scss';
 
 // Api URL //
-const baseURL = 'https://restcountries.com/v2/all';
+// const baseURL = 'https://restcountries.com/v3.1/all';
+// const baseURL2 = 'https://restcountries.com/v3.1/region/';
 
 const Home = () => {
     const [countries, setCountries] = useState(null);
+    const [region, setRegion] = useState('');
+    const [name, setName] = useState('');
 
     useEffect(() => {
-        getAllContries();
-    }, []);
+        const timeOut = setTimeout(() => {
+            getAllContries();
+        }, 500);
+
+        return () => clearTimeout(timeOut);
+    }, [region, name]);
 
     const getAllContries = async () => {
+        let baseURL = 'https://restcountries.com/v3.1/all';
+        if (region) baseURL = `https://restcountries.com/v3.1/region/${region}`;
+        if (name) baseURL = `https://restcountries.com/v3.1/name/${name}`;
         try {
             const { data } = await axios.get(baseURL);
             setCountries(data);
+            console.log(data);
         } catch (error) {}
     };
 
@@ -31,8 +42,8 @@ const Home = () => {
         <main className={styles.main}>
             <Container>
                 <div className={styles.controls}>
-                    <SearchBox />
-                    <SelectFilter />
+                    <SearchBox name={name} setName={setName} />
+                    <SelectFilter region={region} setRegion={setRegion} />
                 </div>
                 <div className={styles.flagsGrid}>
                     {countries &&
@@ -41,7 +52,7 @@ const Home = () => {
                                 return (
                                     <FlagItem
                                         flag={flags.png}
-                                        name={name}
+                                        name={name.common}
                                         population={population}
                                         region={region}
                                         capital={capital}
