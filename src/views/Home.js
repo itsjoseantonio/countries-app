@@ -6,6 +6,7 @@ import SearchBox from '../components/SearchBox';
 import Container from '../components/Container';
 import SelectFilter from '../components/SelectFilter';
 import FlagItem from '../components/FlagItem';
+import Loader from '../components/Loader';
 
 // Styles //
 import styles from '../Styles/views/Home.module.scss';
@@ -18,6 +19,7 @@ const Home = () => {
     const [countries, setCountries] = useState(null);
     const [region, setRegion] = useState('');
     const [name, setName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const timeOut = setTimeout(() => {
@@ -31,11 +33,15 @@ const Home = () => {
         let baseURL = 'https://restcountries.com/v3.1/all';
         if (region) baseURL = `https://restcountries.com/v3.1/region/${region}`;
         if (name) baseURL = `https://restcountries.com/v3.1/name/${name}`;
+        setIsLoading(true);
         try {
             const { data } = await axios.get(baseURL);
             setCountries(data);
             console.log(data);
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
+        setIsLoading(false);
     };
 
     return (
@@ -48,9 +54,13 @@ const Home = () => {
                 <div className={styles.flagsGrid}>
                     {countries &&
                         countries.map(
-                            ({ flags, name, population, region, capital }) => {
+                            (
+                                { flags, name, population, region, capital },
+                                i
+                            ) => {
                                 return (
                                     <FlagItem
+                                        key={i}
                                         flag={flags.png}
                                         name={name.common}
                                         population={population}
@@ -60,6 +70,7 @@ const Home = () => {
                                 );
                             }
                         )}
+                    {isLoading && <Loader />}
                 </div>
             </Container>
         </main>
