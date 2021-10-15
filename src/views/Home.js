@@ -13,10 +13,6 @@ import Loader from '../components/Loader';
 // Styles //
 import styles from '../Styles/views/Home.module.scss';
 
-// Api URL //
-// const baseURL = 'https://restcountries.com/v3.1/all';
-// const baseURL2 = 'https://restcountries.com/v3.1/region/';
-
 const Home = () => {
     const [countries, setCountries] = useState(null);
     const [region, setRegion] = useState('');
