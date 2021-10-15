@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // Components //
+import LazyLoad from 'react-lazyload';
 import SearchBox from '../components/SearchBox';
 import Container from '../components/Container';
 import SelectFilter from '../components/SelectFilter';
@@ -31,9 +33,12 @@ const Home = () => {
 
     const getAllContries = async () => {
         let baseURL = 'https://restcountries.com/v3.1/all';
+
         if (region) baseURL = `https://restcountries.com/v3.1/region/${region}`;
         if (name) baseURL = `https://restcountries.com/v3.1/name/${name}`;
+
         setIsLoading(true);
+
         try {
             const { data } = await axios.get(baseURL);
             setCountries(data);
@@ -41,6 +46,7 @@ const Home = () => {
         } catch (error) {
             console.log(error);
         }
+
         setIsLoading(false);
     };
 
@@ -59,14 +65,20 @@ const Home = () => {
                                 i
                             ) => {
                                 return (
-                                    <FlagItem
+                                    <LazyLoad
+                                        className={styles.lazyload}
                                         key={i}
-                                        flag={flags.png}
-                                        name={name.common}
-                                        population={population}
-                                        region={region}
-                                        capital={capital}
-                                    />
+                                    >
+                                        <Link to={`/${name.common}`}>
+                                            <FlagItem
+                                                flag={flags.png}
+                                                name={name.common}
+                                                population={population}
+                                                region={region}
+                                                capital={capital}
+                                            />
+                                        </Link>
+                                    </LazyLoad>
                                 );
                             }
                         )}

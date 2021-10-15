@@ -3,7 +3,7 @@ import styles from '../Styles/components/FlagItem.module.scss';
 
 const FlagItem = ({ flag, name, population, region, capital }) => {
     return (
-        <a href="/" className={styles.flagItem}>
+        <div className={styles.flagItem}>
             <div className={styles.flagItem__image}>
                 <img src={flag} alt={name} />
             </div>
@@ -21,7 +21,7 @@ const FlagItem = ({ flag, name, population, region, capital }) => {
                     </li>
                 </ul>
             </div>
-        </a>
+        </div>
     );
 };
 
