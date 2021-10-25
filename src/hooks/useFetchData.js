@@ -6,7 +6,6 @@ const useFetchData = (url = 'https://restcountries.com/v3.1/all') => {
 
     useEffect(() => {
         getData(url);
-        console.log('execute', url);
     }, [url]);
 
     const getData = async () => {

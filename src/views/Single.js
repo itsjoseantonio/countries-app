@@ -20,21 +20,47 @@ const Single = () => {
     };
     const { data } = useCountry(name);
 
+    console.log(data);
+
     return (
-        <main>
+        <main className={styles.main}>
             <Container>
-                <Link to="/">
-                    <BackButton />
-                </Link>
-                <div>
-                    <div>
-                        <img src={data && data[0].flags.svg} alt="" />
-                    </div>
-                    <div>
-                        <h2>{data && data[0].name.common}</h2>
-                    </div>
+                <div className={styles.main__back}>
+                    <Link to="/">
+                        <BackButton />
+                    </Link>
                 </div>
-                <h1>Single</h1>
+                {data && (
+                    <div className={styles.content}>
+                        <div className={styles.content__image}>
+                            <img
+                                src={data[0].flags.svg}
+                                alt={data[0].name.common}
+                            />
+                        </div>
+                        <div className={styles.content__info}>
+                            <h2>{data[0].name.common}</h2>
+                            <ul>
+                                <li>Native name: {data[0].name.common}</li>
+                                <li>Population: {data[0].population}</li>
+                                <li>Region: {data[0].name.common}</li>
+                                <li>Sub Region: {data[0].region}</li>
+                                <li>Capital: {data[0].capital[0]}</li>
+                                <li>Top Level Domain: {data[0].tld[0]}</li>
+                                <li>Currencies: {data[0].name.common}</li>
+                                <li>Languages: {data[0].name.common}</li>
+                            </ul>
+                            <div className={styles.content__info__borders}>
+                                <p>
+                                    Borders:{' '}
+                                    {data[0].borders.map((item, i) => (
+                                        <span key={i}>{item}</span>
+                                    ))}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </Container>
         </main>
     );
