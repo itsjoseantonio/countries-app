@@ -38,7 +38,6 @@ const Home = () => {
         try {
             const { data } = await axios.get(baseURL);
             setCountries(data);
-            console.log(data);
         } catch (error) {
             console.log(error);
         }

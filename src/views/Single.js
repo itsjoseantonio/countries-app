@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
 
 // Components //
 import Container from '../components/Container';
 import BackButton from '../components/BackButton';
 
+// Hooks //
+import useFetchData from '../hooks/useFetchData';
+
 // Styles //
 import styles from '../Styles/views/Single.module.scss';
 
 const Single = () => {
-    const [country, setCountry] = useState(null);
     const { name } = useParams();
-    console.log(name);
-
-    useEffect(() => {
-        getCountry();
-    }, []);
-
-    const getCountry = async () => {
-        try {
-            const { data } = await axios.get(
-                `https://restcountries.com/v3.1/name/${name}`
-            );
-            console.log(data);
-            setCountry(data);
-        } catch (error) {}
+    const useCountry = (filter = '') => {
+        const data = useFetchData(
+            `https://restcountries.com/v3.1/name/${filter}`
+        );
+        return data;
     };
+    const { data } = useCountry(name);
 
     return (
         <main>
@@ -36,10 +28,10 @@ const Single = () => {
                 </Link>
                 <div>
                     <div>
-                        <img src={country && country[0].flags.svg} alt="" />
+                        <img src={data && data[0].flags.svg} alt="" />
                     </div>
                     <div>
-                        <h2>{country && country[0].name.common}</h2>
+                        <h2>{data && data[0].name.common}</h2>
                     </div>
                 </div>
                 <h1>Single</h1>
