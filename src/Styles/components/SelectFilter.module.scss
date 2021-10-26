@@ -1,7 +1,13 @@
+@import '../abstracts/mixins';
+
 .seletFilter {
     position: relative;
     max-width: 220px;
     width: 100%;
+
+    @include breakpoint-down(xs) {
+        max-width: 100%;
+    }
 
     select {
         border-radius: 5px;

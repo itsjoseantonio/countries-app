@@ -1,9 +1,14 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 
 .main {
     background-color: $light-mode-bg;
     min-height: calc(100vh - 60px);
     padding: 40px 0;
+
+    @include breakpoint-down(sm) {
+        padding: 30px 0;
+    }
 }
 
 .controls {
@@ -11,6 +16,14 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+
+    @include breakpoint-down(xs) {
+        flex-direction: column;
+    }
+
+    @include breakpoint-down(sm) {
+        margin-bottom: 30px;
+    }
 }
 
 .flagsGrid {
@@ -20,6 +33,10 @@
     grid-auto-rows: minmax(auto, auto);
     min-height: 200px;
     position: relative;
+
+    @include breakpoint-down(xs) {
+        grid-gap: 25px 50px;
+    }
 }
 
 .lazyload {

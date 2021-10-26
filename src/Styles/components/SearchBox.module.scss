@@ -1,9 +1,15 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 
 .searchBox {
     position: relative;
     max-width: 400px;
     width: 100%;
+
+    @include breakpoint-down(xs) {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
 
     input {
         outline: none;

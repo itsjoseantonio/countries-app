@@ -41,14 +41,35 @@ const Single = () => {
                         <div className={styles.content__info}>
                             <h2>{data[0].name.common}</h2>
                             <ul>
-                                <li>Native name: {data[0].name.common}</li>
-                                <li>Population: {data[0].population}</li>
-                                <li>Region: {data[0].name.common}</li>
-                                <li>Sub Region: {data[0].region}</li>
-                                <li>Capital: {data[0].capital[0]}</li>
-                                <li>Top Level Domain: {data[0].tld[0]}</li>
-                                <li>Currencies: {data[0].name.common}</li>
-                                <li>Languages: {data[0].name.common}</li>
+                                <li>
+                                    <span>Native name: </span>
+                                    {data[0].name.common}
+                                </li>
+                                <li>
+                                    <span>Population: </span>
+                                    {data[0].population}
+                                </li>
+                                <li>
+                                    <span>Region: </span> {data[0].name.common}
+                                </li>
+                                <li>
+                                    <span>Sub Region: </span> {data[0].region}
+                                </li>
+                                <li>
+                                    <span>Capital: </span> {data[0].capital[0]}
+                                </li>
+                                <li>
+                                    <span>Top Level Domain: </span>
+                                    {data[0].tld[0]}
+                                </li>
+                                <li>
+                                    <span>Currencies: </span>
+                                    {data[0].name.common}
+                                </li>
+                                <li>
+                                    <span>Languages: </span>
+                                    {data[0].name.common}
+                                </li>
                             </ul>
                             <div className={styles.content__info__borders}>
                                 <p>
