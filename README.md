@@ -1,6 +1,6 @@
 # Countries App
 
-### [Live Demo](http://localhost:3000/)
+### [Live Demo](https://itsjoseantonio.github.io/foxbel-music-app)
 
 #### 📝 Description
 
@@ -11,5 +11,6 @@ Seek information of any country around the world
 -   React state - useState()
 -   React effects - useEffect()
 -   React router
+-   Custom Hooks
 -   Parent and child components
 -   Css modules
