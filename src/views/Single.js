@@ -20,8 +20,6 @@ const Single = () => {
     };
     const { data } = useCountry(name);
 
-    console.log(data);
-
     return (
         <main className={styles.main}>
             <Container>
