@@ -1,6 +1,6 @@
 # Countries App
 
-### [Live Demo](https://itsjoseantonio.github.io/foxbel-music-app)
+### [Live Demo](https://itsjoseantonio.github.io/countries-app)
 
 #### 📝 Description
 
