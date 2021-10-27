@@ -1,0 +1,17 @@
+@import '../abstracts/variables';
+
+html[data-theme='light'] {
+    --color: hsl(200, 15%, 8%);
+    --bg-main: hsl(0, 0%, 98%);
+    --input-icon: hsl(0, 0%, 52%);
+    --bg-elements: hsl(0, 0%, 100%);
+    --placeholder-input: hsl(0, 0%, 52%);
+}
+
+html[data-theme='dark'] {
+    --color: hsl(0, 0%, 100%);
+    --bg-main: hsl(207, 26%, 17%);
+    --input-icon: hsl(0, 0%, 100%);
+    --bg-elements: hsl(209, 23%, 22%);
+    --placeholder-input: hsl(0, 0%, 100%);
+}

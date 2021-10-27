@@ -2,7 +2,7 @@
 @import '../abstracts/mixins';
 
 .header {
-    background-color: $white;
+    background-color: var(--bg-elements);
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
     position: relative;
 

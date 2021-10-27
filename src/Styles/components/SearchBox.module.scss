@@ -18,6 +18,12 @@
         border-radius: 5px;
         padding: 10px 20px 10px 60px;
         width: 100%;
+        background-color: var(--bg-elements);
+        color: var(--color);
+
+        &::placeholder {
+            color: var(--placeholder-input);
+        }
     }
 
     svg {
@@ -25,5 +31,6 @@
         top: 50%;
         margin-top: -8px;
         left: 20px;
+        color: var(--input-icon);
     }
 }

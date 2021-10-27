@@ -2,7 +2,7 @@
 @import '../abstracts/mixins';
 
 .main {
-    background-color: $light-mode-bg;
+    background-color: var(--bg-main);
     min-height: calc(100vh - 60px);
     padding: 40px 0;
 
