@@ -8,9 +8,11 @@ Seek information of any country around the world
 
 #### 🛠️ Built with
 
--   React state - useState()
--   React effects - useEffect()
+-   ReactJs
+-   React state
+-   React effects
 -   React router
 -   Custom Hooks
 -   Parent and child components
 -   Css modules
+-   Axios
