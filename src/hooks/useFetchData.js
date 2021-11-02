@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useFetchData = (url = 'https://restcountries.com/v3.1/all') => {
+const useFetchData = (url) => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
