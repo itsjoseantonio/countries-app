@@ -1,5 +1,11 @@
 {
-    "name": "App",
+    "name": "Contries App",
+    "short_name": "Contries App",
+    "theme_color": "#202c37",
+    "background_color": "#202c37",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-icon-36x36.png",
