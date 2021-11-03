@@ -2,7 +2,7 @@
 
 .loader {
     border: 0.3em solid transparent;
-    border-top-color: $dark-blue;
+    border-top-color: var(--color);
     border-radius: 50%;
     animation: rotate 1s linear infinite;
     position: relative;
@@ -26,7 +26,7 @@
         position: absolute;
         top: -0.3em;
         left: -0.3em;
-        border: 0.3em solid $dark-blue;
+        border: 0.3em solid var(--color);
         border-radius: 50%;
         opacity: 0.5;
     }

@@ -1,24 +1,32 @@
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 // Components //
 import Container from '../components/Container';
 import BackButton from '../components/BackButton';
 
-// Hooks //
-import useFetchData from '../hooks/useFetchData';
-
 // Styles //
 import styles from '../Styles/views/Single.module.scss';
 
 const Single = () => {
+    const [country, setCountry] = useState(null);
     const { name } = useParams();
-    const useCountry = (filter = '') => {
-        const data = useFetchData(
-            `https://restcountries.com/v3.1/name/${filter}`
-        );
-        return data;
+
+    useEffect(() => {
+        getCountry();
+    }, []);
+
+    const getCountry = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://restcountries.com/v3.1/name/${name}`
+            );
+            setCountry(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
-    const { data } = useCountry(name);
 
     return (
         <main className={styles.main}>
@@ -28,51 +36,54 @@ const Single = () => {
                         <BackButton />
                     </Link>
                 </div>
-                {data && (
+                {country && (
                     <div className={styles.content}>
                         <div className={styles.content__image}>
                             <img
-                                src={data[0].flags.svg}
-                                alt={data[0].name.common}
+                                src={country[0].flags.svg}
+                                alt={country[0].name.common}
                             />
                         </div>
                         <div className={styles.content__info}>
-                            <h2>{data[0].name.common}</h2>
+                            <h2>{country[0].name.common}</h2>
                             <ul>
                                 <li>
                                     <span>Native name: </span>
-                                    {data[0].name.common}
+                                    {country[0].name.common}
                                 </li>
                                 <li>
                                     <span>Population: </span>
-                                    {data[0].population}
+                                    {country[0].population}
                                 </li>
                                 <li>
-                                    <span>Region: </span> {data[0].name.common}
+                                    <span>Region: </span>{' '}
+                                    {country[0].name.common}
                                 </li>
                                 <li>
-                                    <span>Sub Region: </span> {data[0].region}
+                                    <span>Sub Region: </span>{' '}
+                                    {country[0].region}
                                 </li>
                                 <li>
-                                    <span>Capital: </span> {data[0].capital[0]}
+                                    <span>Capital: </span>{' '}
+                                    {country[0].capital[0]}
                                 </li>
                                 <li>
                                     <span>Top Level Domain: </span>
-                                    {data[0].tld[0]}
+                                    {country[0].tld[0]}
                                 </li>
                                 <li>
                                     <span>Currencies: </span>
-                                    {data[0].name.common}
+                                    {country[0].name.common}
                                 </li>
                                 <li>
                                     <span>Languages: </span>
-                                    {data[0].name.common}
+                                    {country[0].name.common}
                                 </li>
                             </ul>
                             <div className={styles.content__info__borders}>
                                 <p>
                                     Borders:{' '}
-                                    {data[0].borders.map((item, i) => (
+                                    {country[0].borders.map((item, i) => (
                                         <span key={i}>{item}</span>
                                     ))}
                                 </p>
