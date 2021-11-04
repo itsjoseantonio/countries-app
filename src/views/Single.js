@@ -6,6 +6,9 @@ import axios from 'axios';
 import Container from '../components/Container';
 import BackButton from '../components/BackButton';
 
+// Helpers //
+import { formatNumber, renderLangs } from '../utils/helpers';
+
 // Styles //
 import styles from '../Styles/views/Single.module.scss';
 
@@ -53,7 +56,7 @@ const Single = () => {
                                 </li>
                                 <li>
                                     <span>Population: </span>
-                                    {country[0].population}
+                                    {formatNumber(country[0].population)}
                                 </li>
                                 <li>
                                     <span>Region: </span>{' '}
@@ -73,11 +76,17 @@ const Single = () => {
                                 </li>
                                 <li>
                                     <span>Currencies: </span>
-                                    {country[0].name.common}
+                                    {
+                                        country[0].currencies[
+                                            Object.keys(
+                                                country[0].currencies
+                                            )[0]
+                                        ].name
+                                    }
                                 </li>
                                 <li>
                                     <span>Languages: </span>
-                                    {country[0].name.common}
+                                    {renderLangs(country)}
                                 </li>
                             </ul>
                             <div className={styles.content__info__borders}>
