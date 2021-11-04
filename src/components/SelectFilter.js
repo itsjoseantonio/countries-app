@@ -14,6 +14,7 @@ const SelectFilter = ({ region, setRegion }) => {
     return (
         <div className={styles.seletFilter}>
             <select
+                aria-label="Region"
                 value={region}
                 onChange={(e) => handleRegion(e.target.value)}
             >
